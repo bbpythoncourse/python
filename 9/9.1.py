@@ -65,6 +65,13 @@ class SingleList:
     def remove_tail(self): 
         if self.length == 0:
             raise ValueError("empty list")
+        
+        if self.head == self.tail:
+            removed = self.head
+            self.head = self.tail = None
+            self.length -= 1
+            return removed 
+
         curr = self.head
         while curr.next != self.tail:
             curr = curr.next
@@ -76,9 +83,17 @@ class SingleList:
 
     def merge(self, other):   # klasy O(1)
     # Węzły z listy other są przepinane do listy self na jej koniec.
+        if self.head == None:
+            self.head = other.head
+            self.length = other.length
+            return
+        if other.head == None:
+            return
+
         self.tail.next = other.head
         self.length += other.count()
         self.tail = other.tail
+        other.clear()
 
     def clear(self):      # czyszczenie listy
         self.head = self.tail = None
@@ -97,7 +112,10 @@ blist = SingleList()
 blist.insert_tail(Node(44))         # [11]
 blist.insert_tail(Node(55))         # [22, 11]
 blist.insert_tail(Node(66))         # [22, 11, 33]
+print(str(blist))
 
+alist.remove_tail()
+alist.remove_tail()
 alist.remove_tail()
 print(str(alist))
 

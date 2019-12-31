@@ -14,13 +14,13 @@ class PriorityQueue:
         if len(self.items) == self.n:
             raise IndexError("full queue")
         self.items.append(item)
-        self.items.sort(reverse = True)
+        self.items.sort()
 
     def remove(self):
         if self.is_empty(): 
             raise IndexError("empty queue")
     
-        return self.items.pop(0) 
+        return self.items.pop() 
 
 q = PriorityQueue(3)
 q.insert(1)
