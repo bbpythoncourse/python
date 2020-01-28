@@ -1,9 +1,14 @@
+import math
+import random
+
 def almost_sorted_ints_reversed(n):
     l = list(range(0, n))
     l.reverse()
-    tmp = l[0]
-    l[0] = l[n-1]
-    l[n-1] = tmp
+    for i in range(0, int(math.sqrt(n))):
+        index = random.randint(0, n-2);
+        tmp = l[index]
+        l[index] = l[index+1]
+        l[index+1] = tmp
     return l
 
 def cmp(a, b):

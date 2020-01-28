@@ -7,13 +7,15 @@ def randomList(n, k):
     return L
 
 def linearSearch(L, y):
-    for number in L: 
+    result = []
+    for i, number in enumerate(L): 
         if number == y:
-            print(number)
+            result.append(i)
+    return result
 
 n = 100
 k = 10
 L = randomList(n, k)
-linearSearch(L, randint(0, k - 1))
-
+result = linearSearch(L, randint(0, k - 1))
+print(result)
 

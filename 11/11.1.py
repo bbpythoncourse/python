@@ -2,20 +2,26 @@ import random
 import math
 
 def rand_ints(n):
-    return random.shuffle(range(0, n))
+    l = [range(0, n)]
+    random.shuffle(l)
+    return l
 
 def almost_sorted_ints(n):
     l = [range(0, n)]
-    tmp = l[0]
-    l[0] = l[n-1]
-    l[n-1] = tmp
+    for i in range(0, int(math.sqrt(n))):
+        index = random.randint(0, n-2);
+        tmp = l[index]
+        l[index] = l[index+1]
+        l[index+1] = tmp
     return l
 
 def almost_sorted_ints_reversed(n):
     l = [range(0, n)].reverse()
-    tmp = l[0]
-    l[0] = l[n-1]
-    l[n-1] = tmp
+    for i in range(0, int(math.sqrt(n))):
+        index = random.randint(0, n-2);
+        tmp = l[index]
+        l[index] = l[index+1]
+        l[index+1] = tmp
     return l
 
 def gaussian_floats(n):
